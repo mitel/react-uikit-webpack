@@ -14,3 +14,5 @@ Currently testing it as an alternative for Bootstrap/React combo. Got inspired b
   * ```npm run pack``` or 
   * ```npm run watch``` and open a browser to http://localhost:8080
 
+[@mitelone](https://twitter.com/mitelone)
+
