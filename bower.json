@@ -1,0 +1,21 @@
+{
+  "name": "react-uikit",
+  "version": "0.0.1",
+  "authors": [
+    "mitel <mitelone@gmail.com>"
+  ],
+  "description": "React & UIkit dev environment",
+  "keywords": [
+    "react",
+    "uikit"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "uikit": "~2.20.0"
+  }
+}
