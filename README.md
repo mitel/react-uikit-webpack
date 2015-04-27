@@ -1,7 +1,7 @@
 # UIkit with React & Webpack
 
 ####Objectives
-Build a minimal boilerplate for [React](https://facebook.github.io/react/), [UIkit](http://getuikit.com) with [Webpack](http://http://webpack.github.io/)
+Build a minimal boilerplate for [React](https://facebook.github.io/react/), [UIkit](http://getuikit.com) with [Webpack](http://webpack.github.io/)
 
 Currently testing it as an alternative for Bootstrap/React combo. Got inspired by this article: http://www.eugenesivokon.com/why-uikit-is-better-than-twitter-bootstrap
 
