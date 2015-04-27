@@ -12,4 +12,5 @@ Currently testing it as an alternative for Bootstrap/React combo. Got inspired b
   * create an empty folder called ```locale``` in ```bower_components/uikit/js/components``` to get rid of some warning when webpacking
   * check ```App.js``` 
   * ```npm run pack``` or ```npm run watch``` 
+  * open a browser to http://localhost:8080
 
