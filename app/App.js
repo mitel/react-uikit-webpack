@@ -32,6 +32,13 @@ require('imports?define=>false!modal');
 require('imports?define=>false!dropdown');
 require('imports?define=>false!datepicker');
 
+var enquire = require('enquire'); //enquire.js - foarte light, un wrapper in jurul window.matchMedia
+
+var MediaQuery = require('react-responsive'); //react component
+
+var MobileDetect = require('imports?define=>false!mobile-detect'),
+    md = new MobileDetect(window.navigator.userAgent);
+
 
 var DropdownTest = React.createClass({
     render() {
@@ -163,19 +170,101 @@ var OffcanvasTest = React.createClass({
 });
 
 var App = React.createClass({
+
+    statics: {
+        isMobile() {
+            return window.matchMedia("(max-device-width: 1224px)").matches
+        }
+    },
+
+    componentWillMount() {
+
+        console.log("mobile "+ md.mobile() );          // 'Sony'
+        console.log("phone "+ md.phone() );           // 'Sony'
+        console.log("tablet "+ md.tablet() );          // null
+        console.log("user agent: "+ md.userAgent() );       // 'Safari'
+        console.log("OS: "+ md.os() );              // 'AndroidOS'
+        console.log("iPhone: "+ md.is('iPhone') );      // false
+        console.log("bot "+ md.is('bot') );         // false
+        console.log("Webkit "+ md.version('Webkit') );         // 534.3
+        console.log("Build "+ md.versionStr('Build') );       // '4.1.A.0.562'
+        console.log("playstation "+ md.match('playstation|xbox') ); // false
+
+        console.log(App.isMobile());
+
+        enquire.register("only screen and (max-device-width: 1224px)", {
+
+            // OPTIONAL
+            // If supplied, triggered when a media query matches.
+            match : function() { console.log("enquire.js match");},
+
+            // OPTIONAL
+            // If supplied, triggered when the media query transitions
+            // *from a matched state to an unmatched state*.
+            unmatch : function() {},
+
+            // OPTIONAL
+            // If supplied, triggered once, when the handler is registered.
+            setup : function() {},
+
+            // OPTIONAL, defaults to false
+            // If set to true, defers execution of the setup function
+            // until the first time the media query is matched
+            deferSetup : false,
+
+            // OPTIONAL
+            // If supplied, triggered when handler is unregistered.
+            // Place cleanup code here
+            destroy : function() {}
+
+        });
+    },
+
     render: function() {
-        return (
-            <div>
-                <DropdownTest/>
-                <FlexBoxTest/>
-                <CommentTest/>
-                <ContainerTest/>
-                <DatePickerTest/>
-                <ModalTest/>
-                <OffcanvasTest/>
-                <button className="uk-button-primary" type="button">nothing</button>
-            </div>
-        )
+        if (App.isMobile()) {
+            return (
+                <div>
+                    <DropdownTest/>
+                    <FlexBoxTest/>
+                    <CommentTest/>
+                    <ContainerTest/>
+                </div>
+            )
+        } else
+            return (
+                <div>
+                    <DatePickerTest/>
+                    <ModalTest/>
+                    <OffcanvasTest/>
+                    <button className="uk-button-primary" type="button">nothing</button>
+                </div>
+            )
+        //return(
+        //    <div>
+        //        <div>Device Test!</div>
+        //        <MediaQuery query='(min-device-width: 1224px)'>
+        //            <div>You are a desktop or laptop</div>
+        //            <MediaQuery query='(min-device-width: 1824px)'>
+        //                <div>You also have a huge screen</div>
+        //            </MediaQuery>
+        //            <MediaQuery query='(max-width: 1224px)'>
+        //                <div>You are sized like a tablet or mobile phone though</div>
+        //            </MediaQuery>
+        //        </MediaQuery>
+        //        <MediaQuery query='(max-device-width: 1224px)'>
+        //            <div>You are a tablet or mobile phone</div>
+        //        </MediaQuery>
+        //        <MediaQuery query='(orientation: portrait)'>
+        //            <div>You are portrait</div>
+        //        </MediaQuery>
+        //        <MediaQuery query='(orientation: landscape)'>
+        //            <div>You are landscape</div>
+        //        </MediaQuery>
+        //        <MediaQuery query='(min-resolution: 2dppx)'>
+        //            <div>You are retina</div>
+        //        </MediaQuery>
+        //    </div>
+        //)
     }
 });
 
