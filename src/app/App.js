@@ -174,6 +174,7 @@ var App = React.createClass({
                 <ModalTest/>
                 <OffcanvasTest/>
                 <button className="uk-button-primary" type="button">nothing</button>
+                <button className="uk-button-primary" type="button">nothing</button>
             </div>
         )
     }
